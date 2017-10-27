@@ -12,3 +12,40 @@
     servers_preferred: "{{ ntp_servers | default([]) }}"
   tags: base
 
+- hosts: www.pulpproject.org
+  tasks:
+    - name: create web builder's user
+      user:
+        name: "{{ websync_user }}"
+        comment: "Web Builder User"
+    - name: "Create vhost for {{ inventory_hostname }}"
+      include_role:
+        name: httpd
+        tasks_from: vhost
+      vars:
+        server_aliases:
+          - pulpproject.org
+        document_root: "{{ websync_path }}"
+        document_root_group: "{{ websync_user }}"
+        # uncomment during migration
+        #use_tls: True
+        #use_letsencrypt: True
+        #force_tls: True
+
+- hosts: web_builders
+  vars:
+    website_username: web_builder
+  roles:
+  - role: builder
+    name: "{{ website_name }}"
+    builder: "{{ website_builder | default('middleman') }}"
+    builder_username: "{{ website_username }}"
+    git_url: "{{ website_repo_url }}"
+    git_version: "{{ website_repo_version }}"
+    auto_deploy_hour: "*/6"
+    # until it is stable enough to spam the team :-)
+    cron_error_email: "{{ pulp_builder_error_email }}"
+  - role: msmtp
+    smart_host: "{{ mail_forwarder }}"
+    disable_freeipa: true
+
