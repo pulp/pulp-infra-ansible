@@ -1,0 +1,136 @@
+---
+
+- name: Load settings based on distribution
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "sys_{{ ansible_distribution }}.yml"
+    - "sys_{{ ansible_os_family }}.yml"
+
+- name: configure DNS resolution
+  template:
+    src: resolv.conf
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: manage_dns_resolution is defined and manage_dns_resolution
+
+# do not merge with next item, since epel need to be installed first
+- name: install Epel
+  package:
+    pkg: epel-release
+    state: present
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version|int >= 7
+
+# cannot use 'yum copr' as yum-plugin-copr is missing on CentOS despite Copr's doc
+# also there is no Ansible module for it
+- name: setup the OSAS Infra repo
+  yum_repository:
+    name: osas_infra
+    description: Copr repo for OSAS ComInfra Team
+    baseurl: "https://copr-be.cloud.fedoraproject.org/results/duck/osas-infra-team-rpm-repo/{{ rpm_repo_component }}/"
+    gpgkey: "https://copr-be.cloud.fedoraproject.org/results/duck/osas-infra-team-rpm-repo/pubkey.gpg"
+    repo_gpgcheck: False
+    gpgcheck: True
+    skip_if_unavailable: True
+    state: present
+    enabled: True
+  when: ansible_os_family == 'RedHat'
+  notify: Clean YUM Metadata
+
+# allow for testing on selected machines
+- name: setup the OSAS Infra repo
+  yum_repository:
+    name: osas_infra_devel
+    description: Copr repo for OSAS ComInfra Team
+    baseurl: "https://copr-be.cloud.fedoraproject.org/results/duck/osas-infra-team-rpm-repo-devel/{{ rpm_repo_component }}/"
+    gpgkey: "https://copr-be.cloud.fedoraproject.org/results/duck/osas-infra-team-rpm-repo-devel/pubkey.gpg"
+    repo_gpgcheck: False
+    gpgcheck: True
+    skip_if_unavailable: True
+    state: present
+    enabled: False
+  when: ansible_os_family == 'RedHat'
+  notify: Clean YUM Metadata
+
+# after all repos are setup and before installing packages
+- meta: flush_handlers
+
+- name: install base rpms
+  package:
+    pkg: "{{ item }}"
+    state: present
+  with_items:
+  - lvm2
+  # needed for yum-complete-transaction
+  - yum-utils
+  - screen
+  - htop
+  - iftop
+  - iotop
+  - strace
+  - vim-enhanced
+  - tcpdump
+  - lsof
+  - needrestart
+  - dialog # useful for debconf and in turn needrestart
+
+- name: Install specific needrestart config
+  template:
+    src: needrestart_osas.conf
+    dest: /etc/needrestart/conf.d/50_osas.conf
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Ensure removing packages also remove their unused dependencies
+  block:
+    - name: Install YUM plugin to remove leaf packages
+      package:
+        pkg: yum-plugin-remove-with-leaves
+        state: present
+    - name: Ensure the YUM plugin do its job always but safely
+      copy:
+        # there is not database of voluntarily installed packages, so it can't be perfect
+        # activate all the time but use 'exclude_bin' to avoid being too zealous
+        content: "[main]\nenabled = 1\nexclude_bin = 1\nremove_always = 1"
+        dest: /etc/yum/pluginconf.d/remove-with-leaves.conf
+        owner: root
+        group: root
+        mode: 0644
+  when: ansible_pkg_mgr == "yum"
+
+- name: Test if the host is an AWS instance
+  stat:
+    path: /etc/cloud/cloud.cfg.d
+  register: cloud_init
+
+- name: Preserve AWS instance hostname
+  copy:
+    dest: /etc/cloud/cloud.cfg.d/06_preserve_hostname.cfg
+    src: 06_preserve_hostname.cfg
+  when: cloud_init.stat.isdir is defined and cloud_init.stat.isdir
+
+- block:
+  - name: install firewalld if available
+    package:
+      pkg: firewalld
+      state: installed
+  - name: work around cloud image who disable firewalld
+    systemd:
+      name: firewalld
+      masked: no
+      enabled: yes # one of 'state' or 'enabled' is compulsory
+    when: ansible_distribution == 'Fedora'
+  - name: start firewalld service
+    service:
+      name: firewalld
+      state: started
+      enabled: yes
+  when: ansible_distribution == 'Fedora' or (ansible_os_family == 'RedHat' and ansible_distribution_major_version|int >= 7)
+
+- name: Install Kernel Module options for firewalling
+  copy:
+    src: firewall_kmod.conf
+    dest: /etc/modprobe.d/
+

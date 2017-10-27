@@ -1,0 +1,12 @@
+---
+manage_dns_resolution: True
+local_nameservers:
+  - 8.43.85.229
+  - 8.43.85.230
+
+# shared resources
+ntp_servers:
+  - ntp1.osci.io
+  - ntp2.osci.io
+mail_forwarder: mx1.osci.io
+

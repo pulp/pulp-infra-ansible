@@ -1,0 +1,18 @@
+---
+- name: install root ssh keys
+  authorized_key: user=root
+                  key="{{ item }}"
+  with_file:
+  - misc_main.pub
+  - misc_backup.pub
+  - quaid.pub
+  - duck.pub
+
+- name: remove old root ssh keys
+  authorized_key:
+    user: root
+    key: "{{ item }}"
+    state: absent
+  with_file:
+  - misc_nano_old.pub
+  - misc_tpm_old.pub

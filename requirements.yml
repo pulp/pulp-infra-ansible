@@ -1,0 +1,14 @@
+---
+- src: git+https://github.com/OSAS/ansible-role-selinux.git
+  name: selinux
+- src: git+https://github.com/OSAS/ansible-role-openssh.git
+  name: openssh
+- src: git+https://gitlab.com/osas/ansible-role-entropy.git
+  name: entropy
+- src: git+https://gitlab.com/osas/ansible-role-guest_virt_tools.git
+  name: guest_virt_tools
+- src: git+https://gitlab.com/osas/ansible-role-unattended_updates.git
+  name: unattended_updates
+- src: git+https://gitlab.com/osas/ansible-role-chrony.git
+  name: chrony
+

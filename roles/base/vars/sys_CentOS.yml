@@ -1,0 +1,2 @@
+---
+rpm_repo_component: "epel-{{ ansible_distribution_major_version }}-$basearch"

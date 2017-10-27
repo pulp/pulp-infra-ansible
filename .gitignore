@@ -1,0 +1,16 @@
+# fact caching to save time
+facts_cache
+# created by Ansible in case of failure
+playbooks/*.retry
+# playbook logs
+playbooks/*.log
+# local admin settings
+# (ansible_become_pass for eg, provided your machine's storage is encrypted)
+group_vars/all/local_settings.yml
+# handled via ansible-galaxy
+roles/selinux
+roles/openssh
+roles/guest_virt_tools
+roles/entropy
+roles/unattended_updates
+roles/chrony
