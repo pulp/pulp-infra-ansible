@@ -49,3 +49,31 @@
     smart_host: "{{ mail_forwarder }}"
     disable_freeipa: true
 
+- hosts: www.pulpproject.org
+  vars:
+    doc_vhost: docs.pulpproject.org
+    doc_user: doc_builder
+  tasks:
+    - name: doc builder's user
+      user:
+        name: "{{ doc_user }}"
+        comment: "Doc Builder User"
+    - name: "Create vhost for {{ doc_vhost }}"
+      include_role:
+        name: httpd
+        tasks_from: vhost
+      vars:
+        website_domain: "{{ doc_vhost }}"
+        document_root: "/var/www/{{ doc_vhost }}"
+        document_root_group: "{{ doc_user }}"
+        # uncomment during migration
+        #use_tls: True
+        #use_letsencrypt: True
+        #force_tls: True
+    # rsync is already installed for the web builder sync
+    - name: Install doc builder's SSH keys
+      authorized_key:
+          key: ""
+          key_options: "command=\"rsync --server -vlogtrze.isf --delete-after --omit-dir-times . /var/www/{{ doc_vhost }}\",no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty"
+          user: "{{ doc_user }}"
+
