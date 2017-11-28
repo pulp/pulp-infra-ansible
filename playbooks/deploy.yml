@@ -23,13 +23,23 @@
         name: httpd
         tasks_from: vhost
       vars:
+        # use vhost without 'www.' as main URL
+        website_domain: pulpproject.org
         server_aliases:
-          - pulpproject.org
+          - www.pulpproject.org
         document_root: "{{ websync_path }}"
         document_root_group: "{{ websync_user }}"
         use_tls: True
         use_letsencrypt: True
         force_tls: True
+    - name: Install redirection to canonical vhost
+      copy:
+        src: "{{ inventory_dir }}/data/web/www_canonical_redirection.conf"
+        dest: "{{ _vhost_confdir }}/"
+        owner: root
+        group: root
+        mode: 0644
+      notify: verify config and restart httpd
 
 - hosts: web_builders
   vars:
