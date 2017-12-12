@@ -63,9 +63,24 @@
     doc_vhost: docs.pulpproject.org
     doc_user: doc_builder
   tasks:
-    - name: doc builder's user
+    - name: Install RSSH
+      package:
+        name: rssh
+        state: installed
+        # TODO: remove when it enters stable EPEL
+        enablerepo: epel-testing
+    - name: Add RSSH config for doc builder's user
+      lineinfile:
+        path: /etc/rssh.conf
+        state: present
+        regexp: '^user\s+=\s+{{ doc_user }}'
+        line: "user = {{ doc_user }}:011:10000:"
+    - name: Create doc builder's user
       user:
         name: "{{ doc_user }}"
+        shell: /usr/bin/rssh
+        groups:
+          - rsshusers
         comment: "Doc Builder User"
     - name: "Create vhost for {{ doc_vhost }}"
       include_role:
@@ -83,6 +98,5 @@
     - name: Install doc builder's SSH keys
       authorized_key:
           key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
-          key_options: "command=\"rsync --server -vlogtrze.isf --delete-after --omit-dir-times . /var/www/{{ doc_vhost }}\",no-port-forwarding,no-agent-forwarding,no-X11-forwarding,no-pty"
           user: "{{ doc_user }}"
 
