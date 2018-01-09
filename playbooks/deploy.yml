@@ -90,10 +90,9 @@
         website_domain: "{{ doc_vhost }}"
         document_root: "/var/www/{{ doc_vhost }}"
         document_root_group: "{{ doc_user }}"
-        # uncomment during migration
-        #use_tls: True
-        #use_letsencrypt: True
-        #force_tls: True
+        use_tls: True
+        use_letsencrypt: True
+        force_tls: True
     # rsync is already installed for the web builder sync
     - name: Install doc builder's SSH keys
       authorized_key:
