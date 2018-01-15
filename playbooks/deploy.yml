@@ -67,8 +67,6 @@
       package:
         name: rssh
         state: installed
-        # TODO: remove when it enters stable EPEL
-        enablerepo: epel-testing
     - name: Add RSSH config for doc builder's user
       lineinfile:
         path: /etc/rssh.conf
