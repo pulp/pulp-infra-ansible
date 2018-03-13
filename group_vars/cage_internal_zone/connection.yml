@@ -1,3 +1,3 @@
 ---
-ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q root@speedy.osci.io"'
+ansible_ssh_common_args: '-J tenant@soeru.osci.io'
 
