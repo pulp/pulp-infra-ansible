@@ -51,7 +51,6 @@
     builder_username: "{{ website_username }}"
     git_url: "{{ website_repo_url }}"
     git_version: "{{ website_repo_version }}"
-    auto_deploy_hour: "*/6"
     # until it is stable enough to spam the team :-)
     cron_error_email: "{{ pulp_builder_error_email }}"
   - role: msmtp
