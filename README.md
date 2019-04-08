@@ -26,3 +26,15 @@ Your config needs to be enhanced to tel git how to handle these files.
 This is very easy, look at this URL for more info:
   https://github.com/building5/ansible-vault-tools
 
+## Improving Ansible Speed
+
+Ansible is slow, but there's a nice project to improve its performance. It still has glitches so it's not enabled by default, but it's easy to enable it.
+
+First install the library (it is not yet packaged):
+
+  pip install mitogen
+
+Then you just need to run playbooks this way:
+
+  ANSIBLE_STRATEGY=mitogen_linear ansible-playbook …
+
