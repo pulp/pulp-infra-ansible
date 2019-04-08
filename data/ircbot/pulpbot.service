@@ -1,0 +1,16 @@
+[Unit]
+Description=Pulp IRC bot
+After=network.target
+
+[Service]
+Environment="PATH=/usr/local/bin:/usr/local/sbin:/usr/local/games:/usr/bin:/usr/sbin:/usr/games:/bin:/sbin:/bin:/opt/local/bin:/opt/local/sbin:/opt/local/games TZ=UTC"
+Type=simple
+ExecStart=/usr/bin/supybot /home/{{ bot_user }}/pulpbot/pulpbot.conf
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+User={{ bot_user }}
+SyslogIdentifier=Pulpbot
+
+[Install]
+WantedBy=multi-user.target
+

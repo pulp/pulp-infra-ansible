@@ -1,1 +1,2 @@
 *.vault.yml diff=ansible-vault merge=ansible-vault
+*.vault diff=ansible-vault merge=ansible-vault
