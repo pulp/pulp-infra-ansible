@@ -67,7 +67,7 @@
         - name: "Install SSH key"
           copy:
             src: "{{ inventory_dir }}/data/ircbot/id_rsa.vault"
-            dest: "/home/{{ bot_user }}/.ssh/"
+            dest: "/home/{{ bot_user }}/.ssh/id_rsa"
             mode: 0400
 
         - name: "Add crontab entry to sync bug triage logs with fedorapeople.org"
