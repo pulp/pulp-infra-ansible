@@ -1,0 +1,99 @@
+---
+
+- hosts: www.pulpproject.org
+  vars:
+    bot_user: pulpbot
+  tasks:
+    - name: "Create user for Pulp IRC bot"
+      user:
+        name: "{{ bot_user }}"
+        comment: "Pulp IRC bot"
+
+    - name: "Install IRC bot softwares"
+      package:
+        name:
+          - limnoria
+          - supybot-meetbot
+          # the following is needed for non-packaged plugins
+          - git
+          - python2-simplejson
+          - python2-restkit
+          # to sync logs outside
+          - rsync
+
+    - name: "Install IRC bot"
+      block:
+        - name: "Create IRC bot directories"
+          file:
+            path: "/home/{{ bot_user }}/pulpbot/{{ item }}"
+            state: directory
+            mode: 0750
+          loop:
+            - .
+            - plugins
+
+        # this bot is made to be managed using ocmmands
+        # let's keep this file in sync is possible, but at least the important settings are there
+        - name: "Create initial bot configuration"
+          template:
+            src: "{{ inventory_dir }}/data/ircbot/pulpbot.conf"
+            dest: "/home/{{ bot_user }}/pulpbot/"
+            force: False
+
+        - name: "Install non-packaged plugins"
+          git:
+            repo: "{{ item.url }}"
+            dest: "/home/{{ bot_user }}/pulpbot/plugins/{{ item.name }}"
+            version: HEAD
+            force: yes
+          loop:
+            - name: Redmine
+              url: https://github.com/veggiematts/supybot-redmine.git
+            - name: PulpTriage
+              url: https://github.com/pulp/supybot-pulptriage.git
+
+        - name: "Crontab don't send mails"
+          cron:
+            env: yes
+            name: MAILTO
+            value: ''
+
+        - name: "Create SSH config directory"
+          file:
+            path: "/home/{{ bot_user }}/.ssh"
+            state: directory
+            mode: 0700
+
+        - name: "Install SSH key"
+          copy:
+            src: "{{ inventory_dir }}/data/ircbot/id_rsa.vault"
+            dest: "/home/{{ bot_user }}/.ssh/id_rsa"
+            mode: 0400
+
+        - name: "Add crontab entry to sync bug triage logs with fedorapeople.org"
+          cron:
+            name: "Sync bug triage logs with fedorapeople.org"
+            job: "rsync -rq /home/{{ bot_user }}/triagelogs/pulp-dev/ pulpadmin@repos.fedorapeople.org:public_html/triage/pulp-dev"
+            minute: 0
+            hour: 16
+            weekday: "2,5"
+
+      become: True
+      become_user: "{{ bot_user }}"
+
+    - name: "Create service for IRC bot"
+      template:
+        src: "{{ inventory_dir }}/data/ircbot/pulpbot.service"
+        dest: /etc/systemd/system/
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: "Start pulpbot service"
+      service:
+        name: pulpbot
+        state: started
+        enabled: yes
+
+  tags: irc_bot
+
