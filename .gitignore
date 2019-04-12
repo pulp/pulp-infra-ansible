@@ -4,6 +4,10 @@ facts_cache
 playbooks/*.retry
 # playbook logs
 playbooks/*.log
+# Python optimized files
+*.pyo
+*.pyc
+__pycache__
 # local admin settings
 # (ansible_become_pass for eg, provided your machine's storage is encrypted)
 group_vars/all/local_settings.yml
