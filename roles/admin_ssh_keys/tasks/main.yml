@@ -8,6 +8,7 @@
   - quaid.pub
   - duck.pub
   - bmbouter.pub
+  - dkliban.pub
 
 - name: remove old root ssh keys
   authorized_key:
