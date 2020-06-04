@@ -18,8 +18,6 @@
           - git
           - python2-simplejson
           - python2-restkit
-          # to sync logs outside
-          - rsync
 
     - name: "Install IRC bot"
       block:
@@ -51,32 +49,6 @@
               url: https://github.com/veggiematts/supybot-redmine.git
             - name: PulpTriage
               url: https://github.com/pulp/supybot-pulptriage.git
-
-        - name: "Crontab don't send mails"
-          cron:
-            env: yes
-            name: MAILTO
-            value: ''
-
-        - name: "Create SSH config directory"
-          file:
-            path: "/home/{{ bot_user }}/.ssh"
-            state: directory
-            mode: 0700
-
-        - name: "Install SSH key"
-          copy:
-            src: "{{ inventory_dir }}/data/ircbot/id_rsa.vault"
-            dest: "/home/{{ bot_user }}/.ssh/id_rsa"
-            mode: 0400
-
-        - name: "Add crontab entry to sync bug triage logs with fedorapeople.org"
-          cron:
-            name: "Sync bug triage logs with fedorapeople.org"
-            job: "rsync -rq /home/{{ bot_user }}/triagelogs/pulp-dev/ pulpadmin@repos.fedorapeople.org:public_html/triage/pulp-dev"
-            minute: 0
-            hour: 16
-            weekday: "2,5"
 
       become: True
       become_user: "{{ bot_user }}"
