@@ -1,0 +1,37 @@
+---
+
+- hosts: www.pulpproject.org
+  vars:
+    website_domain: logs.pulpproject.org
+    document_root: /home/pulpbot/triagelogs
+  tasks:
+    - name: "Allow Httpd to publish logs"
+      acl:
+        path: /home/pulpbot/
+        entity: apache
+        etype: user
+        permissions: rx
+        state: present
+
+    - name: "Create vhost for {{ website_domain }}"
+      include_role:
+        name: httpd
+        tasks_from: vhost
+      vars:
+        use_tls: True
+        use_letsencrypt: True
+        force_tls: True
+
+    - name: "Allow web index for {{ website_domain }}"
+      copy:
+        content: "<LocationMatch \"^/.*$\">\n\tOptions +Indexes\n</LocationMatch>"
+        dest: "{{ _vhost_confdir }}/free_listing.conf"
+      notify: reload httpd
+
+    - name: "allow Apache to read inside /home"
+      seboolean:
+        name: httpd_read_user_content
+        state: yes
+        persistent: yes
+      notify: restart httpd
+
