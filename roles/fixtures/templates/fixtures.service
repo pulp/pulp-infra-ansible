@@ -1,0 +1,9 @@
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/podman run --rm -p 8080:80 -e BASE_URL=https://{{ website_domain }} --name fixtures "{{ image }}"
+ExecStop=/usr/bin/podman stop -t 10 fixtures
+KillMode=none
+
+[Install]
+WantedBy=multi-user.target
+
