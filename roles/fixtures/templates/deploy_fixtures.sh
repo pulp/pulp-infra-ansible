@@ -13,7 +13,7 @@ if [ "$current_online_version" != "$current_deployed_version" ]; then
     podman pull -q $CONTAINER
     systemctl restart fixtures
     sleep 30
-    podman container prune -f
+    podman system prune -f
 fi
 
 echo $current_online_version > $STATEFILE
