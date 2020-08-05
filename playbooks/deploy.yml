@@ -60,25 +60,33 @@
 - hosts: www.pulpproject.org
   vars:
     doc_vhost: docs.pulpproject.org
-    doc_user: doc_builder
+    doc_components:
+      pulpcore:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
+      pulp_ansible:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5YUMweGveAl/o9IRcSp35ArljWLbHknn1gdxdBoTssaW8i1ulAyvk+s9k2qMwdAisTkM/5EoCyQ+7glAosRracxnwTkkg6HQY33Ti91rm9WeQ3RZTldxCKrmHRNoHxyJPEqPORULs/LbTPrjNQ10LjkUTR9piLIVLocalRr5s96gKkzrYGZNnQcXEN6MPXreoIRxEgPIt3NQNeySdxfKxtA5BqvdKvBfrLSuUFYmLLh/TFui/KGk9Mt+yOvi9sjMz3r46nlGeKW3LGNyRaWq5I7ul24oK8fpmKQ+m9psq9N9MFCmxHoBKCzADZmfnnx4yJofkR/JfgQ+uQ3APVdsdzYLNZ7UTtqdNRPV6f+UwlrZQULVnpma2CpjoPsrzHMACSxYDqF0B8YoDjhHhZau0qxNYgBrX5e6DdradC+PrZsX8VUtW38U9qHzzPP+3OoclKLMY31tF15jP8em8m1MJi0YniImYVqJgumcsm9iYUweH6LyiC8ObNLatnJYTKUU= dkliban@localhost.localdomain"
+      pulp_container:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5VVD60Gna4PxaAijZza2BRasbpwTM7IdewnHhFP8zVExxu4mSsywIM0Ir3WDaTwcArX67aFByCxy1KCNa92/wRkRhaMm4T/EC4tza/jto90QJyF1zm66Fg2U8TsPduEU8I7EYGMbd1qIkLhP+QH/k1pceedrKVj+xPvjmt4yTIxxdJa+HLSg11UPYGAjDhx3qXhdzGbNMt8tBL2hV9zbasiwloslAOEts69v6T4ljR02HLOpw4N7U19HH8V5kOXbjNxcYQcmTKw+WyJm9SFmeKnoPYfc1a0OblEmZclOXrJmT0+2Q4QUDaLnkcXS2hE7dcAEJyDpBqTrxpadpBSSqgS18mPrgAXJe0xQunX9igPNMm3xdUpLfLnXYD4Y8yPE5za34tojguZokXUKFZgHPCboV8Kbq294QM/BbpJwd+ayUeY49XAT+02nkQUyP6g2waRJA529bUOCaOCnHLcbgdqHATPD/MQ+LydKTkoJAaYvFXvmVs9QtElTwUAXps1U= dkliban@localhost.localdomain"
+      pulp_deb:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVB6AIgBGMc99Znft0XwAt0628dEmGuQlilmYtdJUSUHgjQr7e6bGpwe1LoEBY14l3wFMTOPuwuyfUlRp4V+z5YIE+1lIGI9aBpKiQ3NH3RxNDfnfFeXk8Eil4QDWzxP7DhD624mdm8IqlsULqPnyRmU0GSCMWakph9EJlQ5y9u6wvOAx4EO+fNOCpWgpD1QQKgby3YAUIsc46BIkLQZ2+91kjCXNE4CcztSRhssRGo7Duys2ouu2iQdc/KQFujoZi4ZKJIwzdNA3rOqFHpZ/rUdf0G2jRswzf+Mcz4+Yf0m86tHKz/V1jnQLQuh5jYbYTrp/mNIF98auGycn/o7/mzJM9c1VnUcmb1Nfsp0ENU6sZlWK2SpNwwClWGQU9l0Bppdl4nwP0t77wklvNpq47WiwbmSMnjhFkRaPzDa9fiR+7CM+Y7PEfquJhD06q/7ZJTDibJDZ4vmBt43NNJEfLQKlfcfn3fCCaVESM/+iq7Q3XKtonoIO7mvOrSbLod/0= dkliban@localhost.localdomain"
+      pulp_file:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH1fMzeGn1z/ilzSn0458Sbfa2FuOd8zv8ffo2rsRyg7jcb79CVxukudFE0tw/rPX0A9V6BFqKP7iDcjGmqjwvmgDNGV3ABnkDNEFzAQycnyXcchJwTSDpr2IZ5el+7Zwsak23lLIBMIxVxm2rLoTKZFHEJ4kSCoh5z3k1p2Yq6AnCIQujB2iEcoivHZUNhdv4zlsfgpxntt9J+U/9raHh+VB9wQcZSK4yxIe19bpmXVe+BREA0JQYBohdRU5wCqKjpchqxukOcVh50RJWg8CZMQN5ENrpibC8h9e0JCGztpR8mZtq4+BBf5/SJRZXVTdlyb5jniqeKXY7GG1BDM3792HWjvM4ovWDwXD4/DyJEJio4bphZ1du1Az3rozGJ+Mk//A6pYbVWxxYa5LYOt+QAoIuFTeDVk3L0t2DmYArEWfB+URUcARn99S0xCHNo82BEqbY+eyCf+VOgyMDOTyIVkNDSaUYKc0oqTp6IDS4Yf5HJNvWak10VMh1ZXf+cas= dkliban@localhost.localdomain"
+      pulp_gem:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDl3xp5A3CtyLqHl/TLBis0A/8wuw6S6G50zQI4mBZdI9qBpSXNHJTQnPDY9pgdYBZ43Y6s2gfehCtM+CXC05q2qUR8g7U4Z6tVAKyLmLogPZsqLmX9BVwAeKMVXm+s0fjz6U2GMoM+o+/CIK0kJChTWNuQh5oM+lcaGOL4Ad6xm9lVN2SFXAQ674Z80gsFJFfJEd7yzEqrOJG/aF3fQvrIgXEZw+CPda6hvQYvhZTzJ/OoX2EhtiK0jTx/i3dKzFWrRp6QCEn4LCEtxit4IT/PQFPwq5zTAB8Sw6nKSuVaoOwJOhVzb6/RsPkSw2VuvrjIWP3SxdZEvC38ws+KJwp1wQR2uVqx93lBgnBJN0uDE+XwEBN8uHr8s/ZOEFLsn97meT948r1TY1NOiaCyQErqd7eHsJe+zPKJrQnck8keGE1ektm7twQf31b4V7RartDYQxUoferJrrDDz++QLI/PCiTIPN2/rAEe1CClFXRD+5i2hCWX1S+qlWazmJBw6r8= dkliban@localhost.localdomain"
+      pulp_maven:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVGip43J5UecO6DORFAd4PoR1RXIhKLGDUMj0NPDcfB8DPI+aSn3xus/m/4GcNJFXq5iBF/cTkp8Pe3LxKnwAPJZLGNttv5Rh3JrubJhMMyyVuX06LDMyiWf//3IFhZJC85EqzKvVarYJw09e//ZncRFjx6DYrmxpCBLU7/dvCoVzJJOMHyBP+vd1/insUM7C7YXMQDZKp3665iF7XHaZu2P4ufUsqLR4CW8sVcjnYGPzzS0JLxNm7XCn1kqPEarWmUccSk+P4FnV6luj/D6htv71I3a9GxX7Z/8+D+maVq6tar9rg5hHEPJxII/8NPG40XA77D+7rWXOEtm/YRXaQktEGPMeMNRwZ68zIMqJstZ7kfwR7/zUEJns/cUi5CQ7diIpst5kh73BCwB0BD603pstdg1jKbpbkl/vhxx+hTyLI3RM1dadHNhCS64ruQbga1UPRw82HbIIUsCEArjpC4mWZ5HiMPLKKY6dXnkU5ws1xvvfXGNXA5INcCx4Ag60= dkliban@localhost.localdomain"
+      pulp_npm:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDF8WtD71bA1Q8Ezx837F0NZktHLctFnqDEEDVK+Tg/raLxwFv45JNBFdbfQiZu7eAmkRtpClXVxJh0iPHEzq4GgT2+9TrI+BRVZ9MsOlO94lclm4g1+Fu5S7wAsKrUItm4pO/XChpzY2B7rXoGXIpaHUxKHsG1i5GP053NSO3quWfw2Jsxnh9TdV+4s2V6DGfg84W306tk23J/NkFzRRoJahvjkWSPWFBH6SnRIVbD8Qz64eTw2riyhqc9p7Jyr2h+hhFkKlwU+gve4nqm1vUxR3f4vph44wIE4W+YB+0P9a3H5mtQ+7IUkmNC5Ait1ZgzDSMo905rmYox1eOWbNnUIihlwJ8GTestx1nbfjz2vkWrLNfHO3fh759EahbfyL8FaDx/C76ruQGzOMVm6k2clDvM0cEg0xeMlcGOAuVbKf2ztWp/M0Y2yWlfEK4gADIFJACSZkm6S556MQKcMi5SnQ8WwzJW9GTwuHTdoHk9IqpNiNt4K+5gyfklMM+h1/c= dkliban@localhost.localdomain"
+      pulp_python:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOOwu9Z/TldohLPMmdnLXEc9k4hTTLJdVzvtYi+udphv86MESpWtF87RXJ8suHVJd6EDi3cLtd0yy5y1DRCCCF4JnY93WDmWQVA7VEvwcryOa5qRtg2l/4VmFEWyA+B+QpYBrKgNlEh+NoyOjrJusI/pc3GPAAsx12hZVTu+kgLWer2QLVGg0b8EPxyUNVddUyishJlidzW79xGSoPL1+LhAJgAfAQejluZbzN7LiK5+GiK2vLRdddMpRVw04/JCqPIbmpzPSnzT6iIvw9UUQWS/pdXexp9IlZjCbECojwOCaN8wcJZ8tHIaLOwDKoMfxm5W0O5czMWcG/03gOi/u9Ny0pEtqI4K2MnoyIY+uBszurhBn248TrPoAeLy8Ate7rZ/BFdD3MJXD0oTV+mY/CTM33HgksaBkyzgyYsdJdysrw94eljweGZE+z6euZyEJsv+goGD65hgNBpxWXq/3HY3YUGazj4LHkbFPVw/pCrkffEekWYPchCPPAxtwEvoc= dkliban@localhost.localdomain"
+      pulp_rpm:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFErIHOwLyM/uLv8qsB3jeBwOQF43gtTTKypIAVJZKaSsHAPYvepsqP04GC4L+Q0TNy5oIMoIy/IxJsHZhRQWVEyPC5AOFBlSxf9zuLRop/OkMaP8OsZAtBvvArqQa7n+FGKaLonUZrHpQ+fH8xsmiK9MoNHyKhz58Wb6yyKL0SqTlQz1tulVaD57aiqSvSAqCvL6cyF9LSCL5QZPsJJL8rY2jqAYnYpWkhznesWqafE1WWTBSptdOq0ojSf+WwBknyTHp4/as8ESHJHyDXSjesMdItYnNLO9khSh24g/mCLE5XTpIIbda7BEDYtCH5ssYO4tBIjmNoCamLMBmCseGyVPzhoiHbiRGaM0oB76cm72EOdlahmDP77/SSSg4yI2kMieFXZ2lRqWF6qaJC1WoDY0zFZRNMoAZ+ooARvmFf1qsWRGtfaZ3awJpGgZWBb3totXXOJpvUQRRd2TxJypXxDYfxWOxcHNbT3YdLfExc/u+Q57tR/EcLgovqICR4wU= dkliban@localhost.localdomain"
   tasks:
-    - name: Install RSSH
+    - name: "Install RSSH"
       package:
         name: rssh
         state: installed
-    - name: Add RSSH config for doc builder's user
-      lineinfile:
-        path: /etc/rssh.conf
-        state: present
-        regexp: '^user\s+=\s+{{ doc_user }}'
-        line: "user = {{ doc_user }}:011:10000:"
-    - name: Create doc builder's user
-      user:
-        name: "{{ doc_user }}"
-        shell: /usr/bin/rssh
-        groups:
-          - rsshusers
-        comment: "Doc Builder User"
+
     - name: "Create vhost for {{ doc_vhost }}"
       include_role:
         name: httpd
@@ -86,15 +94,28 @@
       vars:
         website_domain: "{{ doc_vhost }}"
         document_root: "/var/www/{{ doc_vhost }}"
-        document_root_group: "{{ doc_user }}"
         use_tls: True
         use_letsencrypt: True
         force_tls: True
-    # rsync is already installed for the web builder sync
-    - name: Install doc builder's SSH keys
-      authorized_key:
-          key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
-          user: "{{ doc_user }}"
+
+    - name: "Install vhost specific configuration"
+      template:
+        src: "{{ inventory_dir }}/data/web/doc_old_layout_redirection.conf"
+        dest: "{{ _vhost_confdir }}/"
+        owner: root
+        group: "{{ httpd_usergroup }}"
+        mode: 0644
+      notify: reload httpd
+
+    - name: "Create doc component"
+      include_tasks: _doc_component.yml
+      loop: "{{ q('dict', doc_components) }}"
+      loop_control:
+        loop_var: component
+      vars:
+        doc_user: "doc_builder_{{ component.key }}"
+
+  tags: doc
 
 - hosts: www.pulpproject.org
   vars:
