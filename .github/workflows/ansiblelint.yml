@@ -1,0 +1,59 @@
+---
+name: Ansible lint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    env:
+      ANSIBLE_FORCE_COLOR: 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        python-version: [3.6, 3.7]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          # pip has issue
+          #python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Show environment
+        run: |
+          ansible --version
+          yamllint --version
+          flake8 --version
+          ansible-lint --version
+      # checks before external roles
+      - name: Test with yamllint
+        run: |
+          yamllint .
+      - name: Test with flake8
+        run: |
+          flake8 --exclude=plugins/strategy/mitogen_linear.py .
+      - name: Install Ansible roles
+        run: |
+          ansible-galaxy install -r requirements.yml
+          echo "::set-env name=EXT_ROLES_DIRS::$(find . -mindepth 2 -name '.galaxy_install_info' -printf '%h ' | xargs -n 1 dirname | paste -sd "," -)"
+      - name: Remove secrets
+        run: |
+          find . -name '*.vault.*' -delete
+      # checks after external roles
+      - name: Run Ansible lint
+        run: |
+          ansible-lint -p --nocolor $(echo ${EXT_ROLES_DIRS} | tr ',' ' ' |sed -r 's/\./--exclude=\./g') -x 204 playbooks/*.yml
+      - name: Check syntax
+        run: |
+          find playbooks/ -maxdepth 1 -name '*.yml' | xargs -n 1 ansible-playbook --syntax-check

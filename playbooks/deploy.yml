@@ -45,17 +45,17 @@
   vars:
     website_username: web_builder
   roles:
-  - role: builder
-    builder_name: "{{ website_name }}"
-    builder: "{{ website_builder | default('middleman') }}"
-    builder_username: "{{ website_username }}"
-    git_url: "{{ website_repo_url }}"
-    git_version: "{{ website_repo_version }}"
-    # until it is stable enough to spam the team :-)
-    cron_error_email: "{{ pulp_builder_error_email }}"
-  - role: msmtp
-    smart_host: "{{ mail_forwarder }}"
-    disable_freeipa: true
+    - role: builder
+      builder_name: "{{ website_name }}"
+      builder: "{{ website_builder | default('middleman') }}"
+      builder_username: "{{ website_username }}"
+      git_url: "{{ website_repo_url }}"
+      git_version: "{{ website_repo_version }}"
+      # until it is stable enough to spam the team :-)
+      cron_error_email: "{{ pulp_builder_error_email }}"
+    - role: msmtp
+      smart_host: "{{ mail_forwarder }}"
+      disable_freeipa: true
 
 - hosts: www.pulpproject.org
   vars:
@@ -108,7 +108,7 @@
       notify: reload httpd
 
     - name: "Create doc component"
-      include_tasks: _doc_component.yml
+      include_tasks: www/doc_component.yml
       loop: "{{ q('dict', doc_components) }}"
       loop_control:
         loop_var: component

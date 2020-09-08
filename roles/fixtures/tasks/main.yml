@@ -2,12 +2,12 @@
 - name: Install packages
   package:
     name:
-    - podman
-    - skopeo
-    - jq
+      - podman
+      - skopeo
+      - jq
     state: present
 
-- name: Copy the deploy script 
+- name: Copy the deploy script
   template:
     src: deploy_fixtures.sh
     dest: /usr/local/bin/deploy_fixtures.sh
@@ -19,10 +19,13 @@
     name: Deploy fixtures
     job: /usr/local/bin/deploy_fixtures.sh
 
-- name: Add systemd service 
+- name: Add systemd service
   template:
     src: fixtures.service
     dest: /etc/systemd/system/fixtures.service
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Add a service
   systemd:
