@@ -1,1 +1,2 @@
-image: "docker.io/pulp/pulp-fixtures" 
+---
+image: "docker.io/pulp/pulp-fixtures"

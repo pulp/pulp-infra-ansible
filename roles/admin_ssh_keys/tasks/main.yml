@@ -16,5 +16,5 @@
     key: "{{ item }}"
     state: absent
   with_file:
-  - misc_nano_old.pub
-  - misc_tpm_old.pub
+    - misc_nano_old.pub
+    - misc_tpm_old.pub

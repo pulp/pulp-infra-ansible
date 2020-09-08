@@ -61,19 +61,19 @@
     pkg: "{{ item }}"
     state: present
   with_items:
-  - lvm2
-  # needed for yum-complete-transaction
-  - yum-utils
-  - screen
-  - htop
-  - iftop
-  - iotop
-  - strace
-  - vim-enhanced
-  - tcpdump
-  - lsof
-  - needrestart
-  - dialog # useful for debconf and in turn needrestart
+    - lvm2
+    # needed for yum-complete-transaction
+    - yum-utils
+    - screen
+    - htop
+    - iftop
+    - iotop
+    - strace
+    - vim-enhanced
+    - tcpdump
+    - lsof
+    - needrestart
+    - dialog   # useful for debconf and in turn needrestart
 
 - name: Install specific needrestart config
   template:
@@ -112,21 +112,21 @@
   when: cloud_init.stat.isdir is defined and cloud_init.stat.isdir
 
 - block:
-  - name: install firewalld if available
-    package:
-      pkg: firewalld
-      state: installed
-  - name: work around cloud image who disable firewalld
-    systemd:
-      name: firewalld
-      masked: no
-      enabled: yes # one of 'state' or 'enabled' is compulsory
-    when: ansible_distribution == 'Fedora'
-  - name: start firewalld service
-    service:
-      name: firewalld
-      state: started
-      enabled: yes
+    - name: install firewalld if available
+      package:
+        pkg: firewalld
+        state: installed
+    - name: work around cloud image who disable firewalld
+      systemd:
+        name: firewalld
+        masked: no
+        enabled: yes   # one of 'state' or 'enabled' is compulsory
+      when: ansible_distribution == 'Fedora'
+    - name: start firewalld service
+      service:
+        name: firewalld
+        state: started
+        enabled: yes
   when: ansible_distribution == 'Fedora' or (ansible_os_family == 'RedHat' and ansible_distribution_major_version|int >= 7)
 
 - name: Install Kernel Module options for firewalling
