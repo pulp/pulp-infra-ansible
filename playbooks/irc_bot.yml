@@ -33,6 +33,7 @@
         # this bot is made to be managed using ocmmands
         # let's keep this file in sync is possible, but at least the important settings are there
         - name: "Create initial bot configuration"
+          # noqa 208
           template:
             src: "{{ inventory_dir }}/data/ircbot/pulpbot.conf"
             dest: "/home/{{ bot_user }}/pulpbot/"

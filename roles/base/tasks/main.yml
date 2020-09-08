@@ -109,6 +109,9 @@
   copy:
     dest: /etc/cloud/cloud.cfg.d/06_preserve_hostname.cfg
     src: 06_preserve_hostname.cfg
+    owner: root
+    group: root
+    mode: 0644
   when: cloud_init.stat.isdir is defined and cloud_init.stat.isdir
 
 - block:
@@ -133,4 +136,7 @@
   copy:
     src: firewall_kmod.conf
     dest: /etc/modprobe.d/
+    owner: root
+    group: root
+    mode: 0644
 

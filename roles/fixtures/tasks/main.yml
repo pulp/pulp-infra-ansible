@@ -23,6 +23,9 @@
   template:
     src: fixtures.service
     dest: /etc/systemd/system/fixtures.service
+    owner: root
+    group: root
+    mode: 0644
 
 - name: Add a service
   systemd:
