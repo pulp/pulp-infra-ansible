@@ -108,7 +108,7 @@
       notify: reload httpd
 
     - name: "Create doc component"
-      include_tasks: _doc_component.yml
+      include_tasks: www/doc_component.yml
       loop: "{{ q('dict', doc_components) }}"
       loop_control:
         loop_var: component
