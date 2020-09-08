@@ -1,0 +1,23 @@
+---
+exclude_paths:
+  - .git
+  - __pycache__
+  - .venv
+
+parseable: true
+
+# E204: Ansible is not a programming language and using (global) variables
+#       to make things beautiful may have consequences
+# E503: if /.changed/ is used, even if you loop on a registered variable
+#       and happens to check item.changed, which cannot be converted in to
+#       a handler, this rule is not clever enough to understand
+# E602: https://github.com/ansible/ansible-lint/issues/457
+#       https://github.com/ansible/ansible/pull/51030
+skip_list:
+  - '204'
+  - '403'
+  - '405'
+  - '503'
+  - '602'
+  - '702'
+

@@ -1,0 +1,27 @@
+---
+extends: default
+
+ignore: |
+  .git
+  __pycache__
+  .venv
+  # cannot lint encrypted files
+  *.vault.yml
+  # cannot handle jinja2 syntax
+  roles/*/templates/*.yml
+  data/tenants/osci/shared_services_params/ansible/osci_zone/services.yml
+
+rules:
+  braces:
+    max-spaces-inside: 1
+    level: error
+  brackets:
+    max-spaces-inside: 1
+    level: error
+  line-length: disable
+  empty-lines: disable
+  truthy: disable
+  comments:
+    require-starting-space: false
+  comments-indentation: disable
+
