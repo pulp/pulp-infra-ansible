@@ -40,6 +40,7 @@
             force: False
 
         - name: "Install non-packaged plugins"
+          # noqa 401
           git:
             repo: "{{ item.url }}"
             dest: "/home/{{ bot_user }}/pulpbot/plugins/{{ item.name }}"
