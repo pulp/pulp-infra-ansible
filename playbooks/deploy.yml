@@ -61,6 +61,9 @@
   vars:
     doc_vhost: docs.pulpproject.org
     doc_components:
+      # Pulp 2 doc
+      en:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
       pulpcore:
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
       pulp_ansible:
