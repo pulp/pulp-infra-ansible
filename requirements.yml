@@ -15,7 +15,7 @@
   name: tor
 - src: git+https://gitlab.com/osas/ansible-role-ah-httpd.git
   name: httpd
-- src: git+https://github.com/OSAS/ansible-role-web_builder.git
+- src: git+https://gitlab.com/osci/ansible-role-web_builder.git
   name: builder
 - src: git+https://gitlab.com/osas/ansible-role-msmtp.git
   name: msmtp
