@@ -5,7 +5,6 @@
   with_file:
   - misc_main.pub
   - misc_backup.pub
-  - quaid.pub
   - duck.pub
   - bmbouter.pub
   - dkliban.pub
@@ -18,3 +17,5 @@
   with_file:
     - misc_nano_old.pub
     - misc_tpm_old.pub
+    - quaid.pub
+
