@@ -145,7 +145,7 @@
       vars:
         use_tls: True
         use_letsencrypt: True
-        reverse_proxy: http://127.0.0.1:8080/
+        document_root: /var/www/fixtures
     - include_role:
         name: fixtures
   tags: fixtures
