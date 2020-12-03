@@ -43,17 +43,15 @@ jobs:
       - name: Test with flake8
         run: |
           flake8 --exclude=plugins/strategy/mitogen_linear.py .
+      - name: Run Ansible lint
+        run: |
+          ansible-lint -p --nocolor -x 204 playbooks/*.yml
       - name: Install Ansible roles
         run: |
           ansible-galaxy install -r requirements.yml
-          echo "::set-env name=EXT_ROLES_DIRS::$(find . -mindepth 2 -name '.galaxy_install_info' -printf '%h ' | xargs -n 1 dirname | paste -sd "," -)"
       - name: Remove secrets
         run: |
           find . -name '*.vault.*' -delete
-      # checks after external roles
-      - name: Run Ansible lint
-        run: |
-          ansible-lint -p --nocolor $(echo ${EXT_ROLES_DIRS} | tr ',' ' ' |sed -r 's/\./--exclude=\./g') -x 204 playbooks/*.yml
       - name: Check syntax
         run: |
           find playbooks/ -maxdepth 1 -name '*.yml' | xargs -n 1 ansible-playbook --syntax-check
