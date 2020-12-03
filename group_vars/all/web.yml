@@ -1,0 +1,5 @@
+---
+enable_hsts: True
+# needed for preload
+hsts_max_age: 31536000
+

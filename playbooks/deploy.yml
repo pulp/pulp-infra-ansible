@@ -32,6 +32,8 @@
         use_tls: True
         use_letsencrypt: True
         force_tls: True
+        hsts_include_subdomains: True
+        hsts_preload: True
     - name: Install redirection to canonical vhost
       copy:
         src: "{{ inventory_dir }}/data/web/www_canonical_redirection.conf"
