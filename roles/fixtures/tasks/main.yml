@@ -19,17 +19,8 @@
     name: Deploy fixtures
     job: /usr/local/bin/deploy_fixtures.sh
 
-- name: Add systemd service
+- name: Deploy fixtures custom conf
   template:
-    src: fixtures.service
-    dest: /etc/systemd/system/fixtures.service
-    owner: root
-    group: root
-    mode: 0644
-
-- name: Add a service
-  systemd:
-    name: fixtures
-    state: started
-    enabled: yes
-    daemon_reload: yes
+    dest: /etc/httpd/conf.d/fixtures.pulpproject.org.conf.d/fixtures.conf
+    src: fixtures.conf
+  notify: verify config and restart httpd
