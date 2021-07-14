@@ -54,7 +54,8 @@
   notify: Clean YUM Metadata
 
 # after all repos are setup and before installing packages
-- meta: flush_handlers
+- name: "Flush Handlers to Update Package Cache"
+  meta: flush_handlers
 
 - name: install base rpms
   package:
