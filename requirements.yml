@@ -1,7 +1,7 @@
 ---
-- src: git+https://github.com/OSAS/ansible-role-selinux.git
+- src: git+https://gitlab.com/osci/ansible-role-selinux.git
   name: selinux
-- src: git+https://github.com/OSAS/ansible-role-openssh.git
+- src: git+https://gitlab.com/osci/ansible-role-openssh.git
   name: openssh
 - src: git+https://gitlab.com/osas/ansible-role-entropy.git
   name: entropy
@@ -9,14 +9,12 @@
   name: guest_virt_tools
 - src: git+https://gitlab.com/osas/ansible-role-unattended_updates.git
   name: unattended_updates
-- src: git+https://gitlab.com/osas/ansible-role-chrony.git
+- src: git+https://gitlab.com/osci/ansible-role-chrony.git
   name: chrony
-- src: git+https://gitlab.com/osas/ansible-role-tor.git
-  name: tor
-- src: git+https://gitlab.com/osas/ansible-role-ah-httpd.git
+- src: git+https://gitlab.com/osci/ansible-role-ah-httpd.git
   name: httpd
 - src: git+https://gitlab.com/osci/ansible-role-web_builder.git
   name: builder
-- src: git+https://gitlab.com/osas/ansible-role-msmtp.git
+- src: git+https://gitlab.com/osci/ansible-role-msmtp.git
   name: msmtp
 
