@@ -23,6 +23,7 @@
         force_tls: True
 
     - name: "Allow web index for {{ website_domain }}"
+      # noqa no-tabs
       copy:
         content: "<LocationMatch \"^/.*$\">\n\tOptions +Indexes\n</LocationMatch>"
         dest: "{{ _vhost_confdir }}/free_listing.conf"
