@@ -150,19 +150,4 @@
         use_letsencrypt: True
         redirect: https://pulpproject.org/
 
-- hosts: www.pulpproject.org
-  vars:
-    website_domain: "fixtures.pulpproject.org"
-  tasks:
-    - name: "Deploy vhost for fixtures.pulpproject.org"
-      include_role:
-        name: httpd
-        tasks_from: vhost
-      vars:
-        use_tls: True
-        use_letsencrypt: True
-        reverse_proxy: http://127.0.0.1:8080/
-    - name: "Deploy fixtures"
-      include_role:
-        name: fixtures
-  tags: fixtures
+
