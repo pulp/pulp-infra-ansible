@@ -3,11 +3,11 @@
   name: selinux
 - src: git+https://gitlab.com/osci/ansible-role-openssh.git
   name: openssh
-- src: git+https://gitlab.com/osas/ansible-role-entropy.git
+- src: git+https://gitlab.com/osci/ansible-role-entropy.git
   name: entropy
-- src: git+https://gitlab.com/osas/ansible-role-guest_virt_tools.git
+- src: git+https://gitlab.com/osci/ansible-role-guest_virt_tools.git
   name: guest_virt_tools
-- src: git+https://gitlab.com/osas/ansible-role-unattended_updates.git
+- src: git+https://gitlab.com/osci/ansible-role-unattended_updates.git
   name: unattended_updates
 - src: git+https://gitlab.com/osci/ansible-role-chrony.git
   name: chrony
