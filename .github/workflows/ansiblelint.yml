@@ -43,12 +43,12 @@ jobs:
       - name: Test with flake8
         run: |
           flake8 --exclude=plugins/strategy/mitogen_linear.py .
-      - name: Run Ansible lint
-        run: |
-          ansible-lint -p --nocolor -x 204 playbooks/*.yml
       - name: Install Ansible roles
         run: |
           ansible-galaxy install -r requirements.yml
+      - name: Run Ansible lint
+        run: |
+          ansible-lint -p $(find . -mindepth 2 -name ".galaxy_install_info" -printf "%h " | xargs -n 1 dirname | sed -r 's/\./--exclude=\./g') playbooks
       - name: Remove secrets
         run: |
           find . -name '*.vault.*' -delete
