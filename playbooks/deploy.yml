@@ -1,15 +1,15 @@
 ---
 - hosts: all
   roles:
-  - base
-  - entropy
-  - guest_virt_tools
-  - selinux
-  - openssh
-  - admin_ssh_keys
-  - unattended_updates
-  - role: chrony
-    servers_preferred: "{{ ntp_servers | default([]) }}"
+    - base
+    - entropy
+    - guest_virt_tools
+    - selinux
+    - openssh
+    - admin_ssh_keys
+    - unattended_updates
+    - role: chrony
+      servers_preferred: "{{ ntp_servers | default([]) }}"
   tags: base
 
 - hosts: www.pulpproject.org

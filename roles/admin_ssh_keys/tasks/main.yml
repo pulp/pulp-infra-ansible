@@ -1,13 +1,14 @@
 ---
 - name: install root ssh keys
-  authorized_key: user=root
-                  key="{{ item }}"
+  authorized_key:
+    user: "root"
+    key: "{{ item }}"
   with_file:
-  - misc_main.pub
-  - misc_backup.pub
-  - duck.pub
-  - bmbouter.pub
-  - dkliban.pub
+    - misc_main.pub
+    - misc_backup.pub
+    - duck.pub
+    - bmbouter.pub
+    - dkliban.pub
 
 - name: remove old root ssh keys
   authorized_key:
