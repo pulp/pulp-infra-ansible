@@ -68,6 +68,8 @@
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
       pulpcore:
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
+      staging_pulp_core:
+        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
       pulp_2to3_migration:
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiP1B79CEAMrUOt2YXBELHfyZKA0w8ZnZh2PU3KVGAx+Dmdy+L8xu17OxJChdIDxZC4NWlhxCJVuY79Zq0mJ2Qo99hDpw3rNrS6UOlGyaUVvObDuh8c6G+DDglSI7KvzhkC0pcdtlykAap9KSwcEMw5rI8SXzKGSW4xRMp7HpJjZ24gdSDANDGanNOs7g1kCkxsFcleLk/SvjiC8vVogjFKCONKcVKSL+GURny8xsXETfsxuvSerzwa8XsMfeJIcaAIo7lEfOqJWNcsf1JkCZAdcv8VKIen7X+H4nAwF6DDRDb4COhGW+xa5bU/TXcpAcp65cFuYhUxUPmumfv8TwFJ+olZ9+877yX3xnS1IcLcczGB2EvRwSOZQWoirSJxXYxSosSdGg9UB2mCMsqqD+XXuuJ3VZ4ehK6gMnAeXf3quGOyXiuduiZgC7DHgAED+MCQsrzFeEvXXZn2ReST/mrdguYFbacmFSwU1PcnecwlMaaX2RTWCX2Wc3HPfywbf0= dkliban@localhost.localdomain"
       pulp_ansible:
@@ -102,6 +104,7 @@
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOOwu9Z/TldohLPMmdnLXEc9k4hTTLJdVzvtYi+udphv86MESpWtF87RXJ8suHVJd6EDi3cLtd0yy5y1DRCCCF4JnY93WDmWQVA7VEvwcryOa5qRtg2l/4VmFEWyA+B+QpYBrKgNlEh+NoyOjrJusI/pc3GPAAsx12hZVTu+kgLWer2QLVGg0b8EPxyUNVddUyishJlidzW79xGSoPL1+LhAJgAfAQejluZbzN7LiK5+GiK2vLRdddMpRVw04/JCqPIbmpzPSnzT6iIvw9UUQWS/pdXexp9IlZjCbECojwOCaN8wcJZ8tHIaLOwDKoMfxm5W0O5czMWcG/03gOi/u9Ny0pEtqI4K2MnoyIY+uBszurhBn248TrPoAeLy8Ate7rZ/BFdD3MJXD0oTV+mY/CTM33HgksaBkyzgyYsdJdysrw94eljweGZE+z6euZyEJsv+goGD65hgNBpxWXq/3HY3YUGazj4LHkbFPVw/pCrkffEekWYPchCPPAxtwEvoc= dkliban@localhost.localdomain"
       pulp_rpm:
         ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFErIHOwLyM/uLv8qsB3jeBwOQF43gtTTKypIAVJZKaSsHAPYvepsqP04GC4L+Q0TNy5oIMoIy/IxJsHZhRQWVEyPC5AOFBlSxf9zuLRop/OkMaP8OsZAtBvvArqQa7n+FGKaLonUZrHpQ+fH8xsmiK9MoNHyKhz58Wb6yyKL0SqTlQz1tulVaD57aiqSvSAqCvL6cyF9LSCL5QZPsJJL8rY2jqAYnYpWkhznesWqafE1WWTBSptdOq0ojSf+WwBknyTHp4/as8ESHJHyDXSjesMdItYnNLO9khSh24g/mCLE5XTpIIbda7BEDYtCH5ssYO4tBIjmNoCamLMBmCseGyVPzhoiHbiRGaM0oB76cm72EOdlahmDP77/SSSg4yI2kMieFXZ2lRqWF6qaJC1WoDY0zFZRNMoAZ+ooARvmFf1qsWRGtfaZ3awJpGgZWBb3totXXOJpvUQRRd2TxJypXxDYfxWOxcHNbT3YdLfExc/u+Q57tR/EcLgovqICR4wU= dkliban@localhost.localdomain"
+
   tasks:
     - name: "Install RSSH"
       package:
@@ -151,6 +154,20 @@
         use_tls: True
         use_letsencrypt: True
         redirect: https://pulpproject.org/
+
+- hosts: www.pulpproject.org
+  vars:
+    website_domain: staging-docs.pulpproject.org
+  tasks:
+    - name: "Create vhost for {{ website_domain }}"
+      include_role:
+        name: httpd
+        tasks_from: vhost
+      vars:
+        use_tls: True
+        use_letsencrypt: True
+        document_root: "/var/www/docs.pulpproject.org/staging_pulp_core"
+  tags: doc
 
 - hosts: www.pulpproject.org
   vars:
