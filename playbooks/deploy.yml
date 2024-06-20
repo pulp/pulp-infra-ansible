@@ -27,7 +27,7 @@
         website_domain: pulpproject.org
         server_aliases:
           - www.pulpproject.org
-        document_root: "{{ websync_path }}"
+        document_root: "/var/www/docs.pulpproject.org/staging_pulp_core"
         document_root_group: "{{ websync_user }}"
         use_tls: True
         use_letsencrypt: True
