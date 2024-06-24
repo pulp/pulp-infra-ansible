@@ -35,7 +35,7 @@
         hsts_include_subdomains: True
         hsts_preload: True
     - name: Install redirection to canonical vhost
-      copy:
+      template:
         src: "{{ inventory_dir }}/data/web/www_canonical_redirection.conf"
         dest: "{{ _vhost_confdir }}/"
         owner: root
@@ -170,7 +170,7 @@
       vars:
         use_tls: True
         use_letsencrypt: True
-        document_root: "/var/www/docs.pulpproject.org/staging_pulp_core"
+        redirect: https://pulpproject.org/
   tags: doc
 
 - hosts: www.pulpproject.org
