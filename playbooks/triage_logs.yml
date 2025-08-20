@@ -6,7 +6,7 @@
     document_root: /home/pulpbot/triagelogs
   tasks:
     - name: "Allow Httpd to publish logs"
-      acl:
+      ansible.posix.acl:
         path: /home/pulpbot/
         entity: apache
         etype: user
@@ -33,7 +33,7 @@
       notify: reload httpd
 
     - name: "allow Apache to read inside /home"
-      seboolean:
+      ansible.posix.seboolean:
         name: httpd_read_user_content
         state: yes
         persistent: yes
