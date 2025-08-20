@@ -20,5 +20,4 @@ roles/unattended_updates
 roles/chrony
 roles/tor
 roles/httpd
-roles/builder
 roles/msmtp

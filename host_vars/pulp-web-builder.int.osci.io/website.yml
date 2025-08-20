@@ -1,9 +1,0 @@
----
-website_name: pulp_web
-website_builder: jekyll
-website_repo_url: https://github.com/pulp/pulpproject.org.git
-website_repo_version: gh-pages
-rsync_server: www.pulpproject.org
-rsync_user: "{{ hostvars['www.pulpproject.org']['websync_user'] }}"
-rsync_location: "{{ hostvars['www.pulpproject.org']['websync_path'] }}"
-
