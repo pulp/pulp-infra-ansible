@@ -13,6 +13,14 @@
   tags: base
 
 - hosts: www.pulpproject.org
+  vars:
+    # old builder's user was called websync_user
+    # this bit of deployment remain but is useful since
+    # doc_builder_staging_pulp_core user was reused in the "new new" deployment
+    # but the user is created properly later.
+    # this should allow the deployment to work again.
+    # until this is properly reworked
+    websync_user: doc_builder_staging_pulp_core
   tasks:
     - name: create web builder's user
       user:
