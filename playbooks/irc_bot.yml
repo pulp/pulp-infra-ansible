@@ -1,6 +1,7 @@
 ---
 
-- hosts: www.pulpproject.org
+- name: "Deploy Pulp IRC Bot"
+  hosts: www.pulpproject.org
   vars:
     bot_user: pulpbot
   tasks:

@@ -1,5 +1,7 @@
 ---
-- hosts: all
+
+- name: "Deploy base system"
+  hosts: all
   roles:
     - base
     - entropy
@@ -12,7 +14,8 @@
       servers_preferred: "{{ ntp_servers | default([]) }}"
   tags: base
 
-- hosts: www.pulpproject.org
+- name: "Deploy website www.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     # old builder's user was called websync_user
     # this bit of deployment remain but is useful since
@@ -51,7 +54,8 @@
         mode: "0644"
       notify: verify config and restart httpd
 
-- hosts: www.pulpproject.org
+- name: "Deploy website docs.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     doc_vhost: docs.pulpproject.org
     doc_components:
@@ -137,7 +141,8 @@
 
   tags: doc
 
-- hosts: www.pulpproject.org
+- name: "Deploy redirect for obsolete website blog.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     old_blog_vhost: blog.pulpproject.org
   tasks:
@@ -151,7 +156,8 @@
         use_letsencrypt: True
         redirect: https://pulpproject.org/
 
-- hosts: www.pulpproject.org
+- name: "Deploy redirect for obsolete website staging-docs.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     website_domain: staging-docs.pulpproject.org
   tasks:

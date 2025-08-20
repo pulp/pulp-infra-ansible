@@ -1,6 +1,7 @@
 ---
 
-- hosts: www.pulpproject.org
+- name: "Deploy website logs.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     website_domain: logs.pulpproject.org
     document_root: /home/pulpbot/triagelogs
