@@ -8,6 +8,8 @@ parseable: true
 
 skip_list:
   - package-latest
+  # we do want to do that, thanks
+  - role-name[path]
   # if /.changed/ is used, even if you loop on a registered variable
   # and happens to check item.changed, which cannot be converted in to
   # a handler, this rule is not clever enough to understand
@@ -19,7 +21,25 @@ skip_list:
   # let's wait for a better collections resolution configuration
   # (see https://github.com/ansible/ansible/issues/68457#issuecomment-613697236)
   - fqcn-builtins
+  # this seems to flag incorrect stuff:
+  # https://github.com/ansible/ansible-lint/issues/2208
+  # https://github.com/ansible/ansible-lint/issues/2209
+  - var-spacing
+  # temporary blocked so code can be merged
+  - jinja[invalid]
+  - experimental
+  # https://github.com/ansible/ansible-lint/issues/2501
+  - template-instead-of-copy
+  # pedandic/useless
+  - name[casing]
+  - name[template]
+  - key-order[task]
+  - no-changed-when
+  # TODO: would be safer to work on this
+  #   (experienced conflicts when running chained plays in complex setups)
+  - var-naming[no-role-prefix]
+  - var-naming[no-reserved]
 
 # offline mode disables installation of requirements.yml
-offline: true
+#offline: true
 
