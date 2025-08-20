@@ -48,7 +48,7 @@
         dest: "{{ _vhost_confdir }}/"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
       notify: verify config and restart httpd
 
 - hosts: www.pulpproject.org
@@ -124,7 +124,7 @@
         dest: "{{ _vhost_confdir }}/"
         owner: root
         group: "{{ httpd_usergroup }}"
-        mode: 0644
+        mode: "0644"
       notify: reload httpd
 
     - name: "Create doc component"

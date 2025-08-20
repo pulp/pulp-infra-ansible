@@ -25,7 +25,7 @@
           file:
             path: "/home/{{ bot_user }}/pulpbot/{{ item }}"
             state: directory
-            mode: 0750
+            mode: "0750"
           loop:
             - .
             - plugins
@@ -61,7 +61,7 @@
         dest: /etc/systemd/system/
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
 
     - name: "Start pulpbot service"
       service:

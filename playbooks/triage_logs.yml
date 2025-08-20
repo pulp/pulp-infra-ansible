@@ -29,7 +29,7 @@
         dest: "{{ _vhost_confdir }}/free_listing.conf"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
       notify: reload httpd
 
     - name: "allow Apache to read inside /home"

@@ -12,7 +12,7 @@
     dest: /etc/resolv.conf
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   when: manage_dns_resolution is defined and manage_dns_resolution
 
 # do not merge with next item, since epel need to be installed first
@@ -82,7 +82,7 @@
     dest: /etc/needrestart/conf.d/50_osas.conf
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
 
 - name: Ensure removing packages also remove their unused dependencies
   block:
@@ -98,7 +98,7 @@
         dest: /etc/yum/pluginconf.d/remove-with-leaves.conf
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
   when: ansible_pkg_mgr == "yum"
 
 - name: Test if the host is an AWS instance
@@ -112,7 +112,7 @@
     src: 06_preserve_hostname.cfg
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
   when: cloud_init.stat.isdir is defined and cloud_init.stat.isdir
 
 - block:
@@ -139,5 +139,5 @@
     dest: /etc/modprobe.d/
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
 
