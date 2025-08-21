@@ -1,6 +1,6 @@
 ---
 - name: install root ssh keys
-  authorized_key:
+  ansible.posix.authorized_key:
     user: "root"
     key: "{{ item }}"
   with_file:
@@ -11,7 +11,7 @@
     - dkliban.pub
 
 - name: remove old root ssh keys
-  authorized_key:
+  ansible.posix.authorized_key:
     user: root
     key: "{{ item }}"
     state: absent

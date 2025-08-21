@@ -14,7 +14,7 @@
     state: directory
     owner: "{{ doc_user }}"
     group: "{{ doc_user }}"
-    mode: 0755
+    mode: "0755"
 
 - name: "Add RSSH config for doc builder's user"
   lineinfile:
@@ -24,11 +24,11 @@
     line: "user = {{ doc_user }}:011:10000:"
     owner: root
     group: root
-    mode: 0644
+    mode: "0644"
 
 # rsync is already installed for the web builder sync
 - name: "Install doc builder's SSH key"
-  authorized_key:
+  ansible.posix.authorized_key:
     key: "{{ component.value.ssh_key }}"
     user: "{{ doc_user }}"
 

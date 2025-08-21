@@ -1,5 +1,7 @@
 ---
-- hosts: all
+
+- name: "Deploy base system"
+  hosts: all
   roles:
     - base
     - entropy
@@ -12,7 +14,16 @@
       servers_preferred: "{{ ntp_servers | default([]) }}"
   tags: base
 
-- hosts: www.pulpproject.org
+- name: "Deploy website www.pulpproject.org"
+  hosts: www.pulpproject.org
+  vars:
+    # old builder's user was called websync_user
+    # this bit of deployment remain but is useful since
+    # doc_builder_staging_pulp_core user was reused in the "new new" deployment
+    # but the user is created properly later.
+    # this should allow the deployment to work again.
+    # until this is properly reworked
+    websync_user: doc_builder_staging_pulp_core
   tasks:
     - name: create web builder's user
       user:
@@ -40,26 +51,11 @@
         dest: "{{ _vhost_confdir }}/"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
       notify: verify config and restart httpd
 
-- hosts: web_builders
-  vars:
-    website_username: web_builder
-  roles:
-    - role: builder
-      builder_name: "{{ website_name }}"
-      builder: "{{ website_builder | default('middleman') }}"
-      builder_username: "{{ website_username }}"
-      git_url: "{{ website_repo_url }}"
-      git_version: "{{ website_repo_version }}"
-      # until it is stable enough to spam the team :-)
-      cron_error_email: "{{ pulp_builder_error_email }}"
-    - role: msmtp
-      smart_host: "{{ mail_forwarder }}"
-      disable_freeipa: true
-
-- hosts: www.pulpproject.org
+- name: "Deploy website docs.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     doc_vhost: docs.pulpproject.org
     doc_components:
@@ -132,7 +128,7 @@
         dest: "{{ _vhost_confdir }}/"
         owner: root
         group: "{{ httpd_usergroup }}"
-        mode: 0644
+        mode: "0644"
       notify: reload httpd
 
     - name: "Create doc component"
@@ -145,7 +141,8 @@
 
   tags: doc
 
-- hosts: www.pulpproject.org
+- name: "Deploy redirect for obsolete website blog.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     old_blog_vhost: blog.pulpproject.org
   tasks:
@@ -159,7 +156,8 @@
         use_letsencrypt: True
         redirect: https://pulpproject.org/
 
-- hosts: www.pulpproject.org
+- name: "Deploy redirect for obsolete website staging-docs.pulpproject.org"
+  hosts: www.pulpproject.org
   vars:
     website_domain: staging-docs.pulpproject.org
   tasks:

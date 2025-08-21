@@ -1,6 +1,7 @@
 ---
 
-- hosts: www.pulpproject.org
+- name: "Deploy Pulp IRC Bot"
+  hosts: www.pulpproject.org
   vars:
     bot_user: pulpbot
   tasks:
@@ -25,7 +26,7 @@
           file:
             path: "/home/{{ bot_user }}/pulpbot/{{ item }}"
             state: directory
-            mode: 0750
+            mode: "0750"
           loop:
             - .
             - plugins
@@ -33,14 +34,14 @@
         # this bot is made to be managed using ocmmands
         # let's keep this file in sync is possible, but at least the important settings are there
         - name: "Create initial bot configuration"
-          # noqa 208
+          # noqa risky-file-permissions
           template:
             src: "{{ inventory_dir }}/data/ircbot/pulpbot.conf"
             dest: "/home/{{ bot_user }}/pulpbot/"
             force: False
 
         - name: "Install non-packaged plugins"
-          # noqa 401
+          # noqa latest[git]
           git:
             repo: "{{ item.url }}"
             dest: "/home/{{ bot_user }}/pulpbot/plugins/{{ item.name }}"
@@ -61,7 +62,7 @@
         dest: /etc/systemd/system/
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
 
     - name: "Start pulpbot service"
       service:

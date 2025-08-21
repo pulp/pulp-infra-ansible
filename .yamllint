@@ -13,9 +13,11 @@ ignore: |
 
 rules:
   braces:
+    min-spaces-inside: 0
     max-spaces-inside: 1
     level: error
   brackets:
+    min-spaces-inside: 0
     max-spaces-inside: 1
     level: error
   line-length: disable
@@ -23,5 +25,9 @@ rules:
   truthy: disable
   comments:
     require-starting-space: false
-  comments-indentation: disable
+    min-spaces-from-content: 1
+  comments-indentation: false
+  octal-values:
+    forbid-implicit-octal: true
+    forbid-explicit-octal: true
 
