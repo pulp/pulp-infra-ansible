@@ -1,0 +1,21 @@
+- name: "Push conntrack to eleven"
+  ansible.posix.sysctl:
+    name: net.netfilter.nf_conntrack_max
+    value: '262144'
+    sysctl_set: true
+    state: present
+    reload: true
+
+- name: "Push tcp syn backlog to eleven too"
+  ansible.posix.sysctl:
+    name: net.ipv4.tcp_max_syn_backlog
+    value: '4096'
+    sysctl_set: true
+    state: present
+    reload: true
+
+- name: "Increase the number of process"
+  template:
+    src: fix_bot.conf
+    dest: /etc/httpd/conf.d/fix_bot.conf
+  notify: verify config and restart httpd
