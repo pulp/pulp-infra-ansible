@@ -53,6 +53,9 @@
         group: root
         mode: "0644"
       notify: verify config and restart httpd
+    - name: Raise limits for scraping
+      include_role:
+        name: httpd_fix_bots
 
 - name: "Deploy website docs.pulpproject.org"
   hosts: www.pulpproject.org
