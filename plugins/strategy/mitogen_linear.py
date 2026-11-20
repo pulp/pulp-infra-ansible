@@ -45,9 +45,7 @@ import sys
 # debuggers and isinstance() work predictably.
 #
 
-BASE_DIR = os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '../../..')
-)
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../.."))
 
 if BASE_DIR not in sys.path:
     sys.path.insert(0, BASE_DIR)
@@ -56,7 +54,8 @@ import ansible_mitogen.loaders
 import ansible_mitogen.strategy
 
 
-Base = ansible_mitogen.loaders.strategy_loader.get('linear', class_only=True)
+Base = ansible_mitogen.loaders.strategy_loader.get("linear", class_only=True)
+
 
 class StrategyModule(ansible_mitogen.strategy.StrategyMixin, Base):
     pass

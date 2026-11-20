@@ -59,51 +59,47 @@
   vars:
     doc_vhost: docs.pulpproject.org
     doc_components:
-      # Pulp 2 doc
       en:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
+        ssh_key: ""
       pulpcore:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
+        ssh_key: ""
       staging_pulp_core:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder"
+        ssh_key: |
+          ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDhCXAPTVB3WhOTCvpjmRow9g+AlAgdr6dXq8ctzPP1I
       pulp_2to3_migration:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCiP1B79CEAMrUOt2YXBELHfyZKA0w8ZnZh2PU3KVGAx+Dmdy+L8xu17OxJChdIDxZC4NWlhxCJVuY79Zq0mJ2Qo99hDpw3rNrS6UOlGyaUVvObDuh8c6G+DDglSI7KvzhkC0pcdtlykAap9KSwcEMw5rI8SXzKGSW4xRMp7HpJjZ24gdSDANDGanNOs7g1kCkxsFcleLk/SvjiC8vVogjFKCONKcVKSL+GURny8xsXETfsxuvSerzwa8XsMfeJIcaAIo7lEfOqJWNcsf1JkCZAdcv8VKIen7X+H4nAwF6DDRDb4COhGW+xa5bU/TXcpAcp65cFuYhUxUPmumfv8TwFJ+olZ9+877yX3xnS1IcLcczGB2EvRwSOZQWoirSJxXYxSosSdGg9UB2mCMsqqD+XXuuJ3VZ4ehK6gMnAeXf3quGOyXiuduiZgC7DHgAED+MCQsrzFeEvXXZn2ReST/mrdguYFbacmFSwU1PcnecwlMaaX2RTWCX2Wc3HPfywbf0= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_ansible:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5YUMweGveAl/o9IRcSp35ArljWLbHknn1gdxdBoTssaW8i1ulAyvk+s9k2qMwdAisTkM/5EoCyQ+7glAosRracxnwTkkg6HQY33Ti91rm9WeQ3RZTldxCKrmHRNoHxyJPEqPORULs/LbTPrjNQ10LjkUTR9piLIVLocalRr5s96gKkzrYGZNnQcXEN6MPXreoIRxEgPIt3NQNeySdxfKxtA5BqvdKvBfrLSuUFYmLLh/TFui/KGk9Mt+yOvi9sjMz3r46nlGeKW3LGNyRaWq5I7ul24oK8fpmKQ+m9psq9N9MFCmxHoBKCzADZmfnnx4yJofkR/JfgQ+uQ3APVdsdzYLNZ7UTtqdNRPV6f+UwlrZQULVnpma2CpjoPsrzHMACSxYDqF0B8YoDjhHhZau0qxNYgBrX5e6DdradC+PrZsX8VUtW38U9qHzzPP+3OoclKLMY31tF15jP8em8m1MJi0YniImYVqJgumcsm9iYUweH6LyiC8ObNLatnJYTKUU= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_certguard:
-        ssh_key: |
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC0f5QqrAUMWBQrchjClUlf3pC9ZnL1oQBTbKpDCPk3rnPp+VwmOt6povV8pTgOcE0X05W4ajxddkNl0MqNGFUdBsJNOH9nGpapBUK7Ty/MzFSonEPXtGDo0yvukbPMs/3Bty1Y6zrwS/VxLptZ/Tp2slYPHSCybt+/yGNkws8ca/KN6v764m4TG2l0Gdxz/gQDCWVNRI4PPK36kiixV2WXXnTjYqbx5CPzSB/hq48INGOauYofL/bcavEMfi/tn/ADARCx6LyyIuGgbvlRmkc0wv4RGWVsbj+PPT5jV/ySSwhhULV601+ZaN6uik6TR3mm/rn9Fyh01IzCSVnLh5q96tjJiluoEOi2yznXQbJJaJmtSZE/g0JSbsCFh+0SiXT+BmmB9qb/lb7Fe6/0XQvSrLQW3SjFIBNEHz6gxuhXVew7VSqAApdf6dOtq4oFSQxmQczgCJKavbGSfy3STUHmNlQwXQmciXh2KqH4orPa5kRRYWSkd1y7zyFsXzjmE4k= dkliban@localhost.localdomain
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder
+        ssh_key: ""
       pulp_cli:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDwLjZZq1yQ1rWRxovPjS4n+A6xoLH+BjME7nJ5w8O6zagiUJFh9xu+YjwcXia8dwbg+vEuTHm+4QfYsMRq/fXTEMu8oqmsUBgivHMYaFQJoxyFOSuykCfO+uUgTjBMYShepJmgM0hwIPs873mzNvODvNoFmHx17QyGeQIbplM5uo/pc6KbbsqLNPOshYdP/Tv2pklDT4Aq6QMWeAVs4oqsvNl6MOFzJmYyQay3L95yIRbiUKp2ETLHuxqxUi4K9wIvz2mpe1NkxyyYdF+tN+V7g0Nsshg5PlQsWKAOZH+qyonbLWGyFQtXKF9svCKIXNhryRoUm71GcLFrh80Rpx2iISX2QryFRsf1Hlc7wLvtWQVpQ7hwfMdmQyoB2JBOo4+Xztfk0D+sGjPZAYlzc0oVxSyBfs+jsihAQrwL1uYu9e74lzq/6Mc5n1KB+cDXIzqg4PDJ+Z2DbH7guats6WpWvhV10GfXIsVADlNwAGWuKp8/LCMXCnKZndCW3RQCecE= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_container:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5VVD60Gna4PxaAijZza2BRasbpwTM7IdewnHhFP8zVExxu4mSsywIM0Ir3WDaTwcArX67aFByCxy1KCNa92/wRkRhaMm4T/EC4tza/jto90QJyF1zm66Fg2U8TsPduEU8I7EYGMbd1qIkLhP+QH/k1pceedrKVj+xPvjmt4yTIxxdJa+HLSg11UPYGAjDhx3qXhdzGbNMt8tBL2hV9zbasiwloslAOEts69v6T4ljR02HLOpw4N7U19HH8V5kOXbjNxcYQcmTKw+WyJm9SFmeKnoPYfc1a0OblEmZclOXrJmT0+2Q4QUDaLnkcXS2hE7dcAEJyDpBqTrxpadpBSSqgS18mPrgAXJe0xQunX9igPNMm3xdUpLfLnXYD4Y8yPE5za34tojguZokXUKFZgHPCboV8Kbq294QM/BbpJwd+ayUeY49XAT+02nkQUyP6g2waRJA529bUOCaOCnHLcbgdqHATPD/MQ+LydKTkoJAaYvFXvmVs9QtElTwUAXps1U= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_cookbook:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC5E6zLFGh52FIbgwoC4M/7rQ1Llug6otUIaECSlOgIyDL5OJjliQochyeM6NDDdIHPXSjZ7LTtUh5nxX+ii8JZ7S4Xpqhb7vdxY9YjWHkGW7vNtN/u13inoUBU+gk5dpJ0v1i6DZawC7LhUWQNX5hLocMC65PSdUELDc0irmY+psrN+gt0ZUAF5K+KcXImF242r+DrX+x5YmFpEBY/NdI1UncuU/4ZRGOZo0Iv3LZs9JAvrBm51akNmho5UtKlqkh7zdotIXlHm3AFL0FHwP+friVYwJaT1Gpks3pxD3ai7pjgV6AZeuEdMXUQzsfWPEOP/C16SCmMS8p4bU+6zDxPccmJnCNhmqnEa7a/Cl9HR6UarfRh1x9cprNoctSdtD+yypPhFL348nXlpcLtkKRsQ8+9vF+HZDoowLynCwLYL5cm6aJe7DIO6MppUboJjkWr+YAZQ+iU5HyQQbG/Hbc+k8Y0W1k2hlp1r7eJfdkSQQxkpO8dgbJkv5edT3OnP/E= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_deb:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVB6AIgBGMc99Znft0XwAt0628dEmGuQlilmYtdJUSUHgjQr7e6bGpwe1LoEBY14l3wFMTOPuwuyfUlRp4V+z5YIE+1lIGI9aBpKiQ3NH3RxNDfnfFeXk8Eil4QDWzxP7DhD624mdm8IqlsULqPnyRmU0GSCMWakph9EJlQ5y9u6wvOAx4EO+fNOCpWgpD1QQKgby3YAUIsc46BIkLQZ2+91kjCXNE4CcztSRhssRGo7Duys2ouu2iQdc/KQFujoZi4ZKJIwzdNA3rOqFHpZ/rUdf0G2jRswzf+Mcz4+Yf0m86tHKz/V1jnQLQuh5jYbYTrp/mNIF98auGycn/o7/mzJM9c1VnUcmb1Nfsp0ENU6sZlWK2SpNwwClWGQU9l0Bppdl4nwP0t77wklvNpq47WiwbmSMnjhFkRaPzDa9fiR+7CM+Y7PEfquJhD06q/7ZJTDibJDZ4vmBt43NNJEfLQKlfcfn3fCCaVESM/+iq7Q3XKtonoIO7mvOrSbLod/0= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_file:
-        ssh_key: |
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDH1fMzeGn1z/ilzSn0458Sbfa2FuOd8zv8ffo2rsRyg7jcb79CVxukudFE0tw/rPX0A9V6BFqKP7iDcjGmqjwvmgDNGV3ABnkDNEFzAQycnyXcchJwTSDpr2IZ5el+7Zwsak23lLIBMIxVxm2rLoTKZFHEJ4kSCoh5z3k1p2Yq6AnCIQujB2iEcoivHZUNhdv4zlsfgpxntt9J+U/9raHh+VB9wQcZSK4yxIe19bpmXVe+BREA0JQYBohdRU5wCqKjpchqxukOcVh50RJWg8CZMQN5ENrpibC8h9e0JCGztpR8mZtq4+BBf5/SJRZXVTdlyb5jniqeKXY7GG1BDM3792HWjvM4ovWDwXD4/DyJEJio4bphZ1du1Az3rozGJ+Mk//A6pYbVWxxYa5LYOt+QAoIuFTeDVk3L0t2DmYArEWfB+URUcARn99S0xCHNo82BEqbY+eyCf+VOgyMDOTyIVkNDSaUYKc0oqTp6IDS4Yf5HJNvWak10VMh1ZXf+cas= dkliban@localhost.localdomain
-            ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNfEAXdhT7mIf4d+XOWvE4hw5uduVyqc1N3ttqHV/5SM37XWHvln9D0IzMtDllXrmvlFuUA8sUCnc3zw3s+zIFh0ln+nhEQAo3StvchmlzmYJD1VyS1e8Pfd9xnD8DOBQNdy3aq4ZVrLtCAYndfX1Y5sfqlgN35OQ+7frjKaJXQWVHuLDGTxWR/y82EOT5JyXPyZd6B9VsQRPmB5oK1eSqMNQikuXJITDRxK6olfIdLzze85gV0aRJYo6GD5Aj68SciIsR95y//afwOQZr8m7OjygTsxLTlzsoRVR2N4uTyOe2i2szqy9kxUnvTiTVDULWicQZLBmv7S1pjaytKJnj pulp-doc-builder
+        ssh_key: ""
       pulp_gem:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDl3xp5A3CtyLqHl/TLBis0A/8wuw6S6G50zQI4mBZdI9qBpSXNHJTQnPDY9pgdYBZ43Y6s2gfehCtM+CXC05q2qUR8g7U4Z6tVAKyLmLogPZsqLmX9BVwAeKMVXm+s0fjz6U2GMoM+o+/CIK0kJChTWNuQh5oM+lcaGOL4Ad6xm9lVN2SFXAQ674Z80gsFJFfJEd7yzEqrOJG/aF3fQvrIgXEZw+CPda6hvQYvhZTzJ/OoX2EhtiK0jTx/i3dKzFWrRp6QCEn4LCEtxit4IT/PQFPwq5zTAB8Sw6nKSuVaoOwJOhVzb6/RsPkSw2VuvrjIWP3SxdZEvC38ws+KJwp1wQR2uVqx93lBgnBJN0uDE+XwEBN8uHr8s/ZOEFLsn97meT948r1TY1NOiaCyQErqd7eHsJe+zPKJrQnck8keGE1ektm7twQf31b4V7RartDYQxUoferJrrDDz++QLI/PCiTIPN2/rAEe1CClFXRD+5i2hCWX1S+qlWazmJBw6r8= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_installer:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCSZKhA8slT8amT85R+4UeyhlNjo0hM94cozNi+EsM1sWudIhpdVvoF1Bql2UY+kHvzoYREcV4xscZGoc7kjwBOQqv/ccA9XwYY+2ySlCOf4xQCoraWyT1mcasNMIBWXiet8vEmhD04inlXmY/PUde9MyshNOMWGjH/ApVcj0O7xOTd/D8OBLZvX98F+LnSuTkDNemtIaH2eZ45VOXWsUNasFX2ShpHihSzM2ToNoQ1Um2Rd9eyMmNcNPcHnKia4jkYjUXpsZ3sypkxuxA9uuainzhLC8THVtmWe2zvCeSY/7FMAN2SYBM4RzPjq+nuP7/tnILoR0E/HV80BGFx5+LtPwTe9vyKsp6UFOQbBqH3L3EPD1i6BfKzDsTWKhzqdUfLXrcrOpypTjX0h0d+YY1zQlEvgFXCxZPcpo0uAhTcoGv1BxkjocETpRUhQVyizW7FEykT1iipFYf4018MTpuZzGImBKw2jJhkA3WCpCxJkDFNRTNrHuYu1yArvPoZdZk= pulp-infra@redhat.com"
+        ssh_key: ""
       pulp_maven:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDVGip43J5UecO6DORFAd4PoR1RXIhKLGDUMj0NPDcfB8DPI+aSn3xus/m/4GcNJFXq5iBF/cTkp8Pe3LxKnwAPJZLGNttv5Rh3JrubJhMMyyVuX06LDMyiWf//3IFhZJC85EqzKvVarYJw09e//ZncRFjx6DYrmxpCBLU7/dvCoVzJJOMHyBP+vd1/insUM7C7YXMQDZKp3665iF7XHaZu2P4ufUsqLR4CW8sVcjnYGPzzS0JLxNm7XCn1kqPEarWmUccSk+P4FnV6luj/D6htv71I3a9GxX7Z/8+D+maVq6tar9rg5hHEPJxII/8NPG40XA77D+7rWXOEtm/YRXaQktEGPMeMNRwZ68zIMqJstZ7kfwR7/zUEJns/cUi5CQ7diIpst5kh73BCwB0BD603pstdg1jKbpbkl/vhxx+hTyLI3RM1dadHNhCS64ruQbga1UPRw82HbIIUsCEArjpC4mWZ5HiMPLKKY6dXnkU5ws1xvvfXGNXA5INcCx4Ag60= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_npm:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDO5lu9ZOYytdmvitUKjhty8E9S2NkR2Jr95uagBlpYLrt+52ls+9uoHy+z/2u3GuSOK4of1wgguhrmLTI+Lh3/C25KBDbWWu9O96H28AvnfazGueU4ln8oII77eThYTkNBCF36hfeWGwkqh5ECOouUi7J4sns7bgxFXiLJrRjwm+GREE+wCDHTCBAqjEeVHOptCNoksXmG0OmE33qE78+qna/FBvOw5v9mtDUwPCuQJaE+GfdUowQ41TvpgcjwIdzidEvdnbLOQCOFHCiPnHpf66IdMzYnEvgJo/YBJBZ2n2SIMO2+HF4p7lj70Q6hBcDAq+bAmjSOfy1Oxd4KmeXUdQXYskTQvwrL47alUTB6lcGLIbTOe5vTPvpr1wYH4K10GQp5Ptl8IqQzzWhxZQn0XVjh3EuqGmY81zSV4vJEpGARkxGcRsiowGaFH0jK8IJJ6bdmpatDTOAJ4m4NPnYiSDr4RiUoGU4INjWHMbKiuPxfIdMR/MpKqYwkJ/2My68= daviddavis"
+        ssh_key: ""
       pulp_oci_images:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCZHk9i9k7hWy8xl3joMlNSTDCVCUMMACtmsK1vY1CH5UcJogd6mqmCpHmSnl2oTnUf3LJBTiEG+5k52R5+bNQbh7Y7dA/uZRqAsENs87edc8HAaDuT7MkPJRdAt523gRQGQvqSA1jlPTI9CFjQIOySd8byY0fCHo1gh4iAvbplxQ9s6MVAh0MRd7i5iflaZCmw/5UJHoSOMoUeAC3a6VB84A9wgTZxkn0QAMjvL4obkDqJhr5T6kpYoBENboFIgbrWa4PrU76dUPWN2xDziuZrKZiBhOdvySy9Vj/jq8j9116cGf9dDGzre2cW/elU+GieueYSpRf4kuQAf19Y1afYudS+jvtnE3RmMYl3CAe8G9FMEs5+08Bn8OXANfzsprggWMlT+cFv7kHBKYTIhvhanSBhdXjx6wWpFswskdi3eadhxKCc4Ue8PCD5QP9sC+FZDOPzMO/9fOLVzTiIFsg3AV9P8+nOZ3NZ4bQ/YOoHZV27NYNrPKeQO9cO8GhRdgE= pulp-infra@redhat.com"
+        ssh_key: ""
       pulp_operator:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC69IqnPSOX/bHDODHw73GkLuJlhw9OhnP2UZullumr1oF3WkVijzrHX7SuCgN+dxreetYDt+5cyv5NR2yih9S58xwta4LmJY3vOrr7HXiUds51NwzeLCMPiXuhKc90M0ohL628ShAQhuCfDCfSpd/EtIZ/f0rwS6FvOKZqLtYzjHLgwXORLPAO6LPUgY+69wi8j/juFC5Li2/lpzRPVGTP0gTpSvZ9bIG2LUtMz0GqefOC0MVYWl2Vm58UOqP41s2ezOC5rFz/BSIEOTljKi0rYJWNa0+SGmhUmlsZDyrEzWlhczAu0v8FopvDOsMRrCbiTA6068b+GmafJ0ENiqRpje2x+Gh0pyvRIUeprPxoTFwNME6QpEclUEJAUbXKx2+cWgXjwbmZQw9Q6u53/3eTffIjmu73zHd96m9ZYXIq8hszSiphmlhBUOqzYKVa/HmlfLwEJEctKy/MO5aXYhbX+OSMXK0s4FWz8IRkKKAYKNdAIIY9gZi2lJQHPKg/CeE= pulp-infra@redhat.com"
+        ssh_key: ""
       pulp_ostree:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDR3BAs7lvJ7Uo6uBCjEA+V7RKXbY4/Er2h7d2CQmXzYxeQ1cvDdcgcpf6n9aOq+hsmdkM3otD7lnPWhUbOnR82SzmGB5HOiUETRqNRkm9ipO2mLuW/rl6Lnn4JO2hMcbEwmZw9nZ42D0gwIR/y5FlqQYGyJPOrJsoxghKb0HB2Ty44JzIZSw3ddOuuqtclws65JRBPS8m8ELPgKeC3FzAAg+saW2AJhZ2Re/2nP9QQ3IBMYCn4PdIvZfBXuaXl6v1xzIEEZxxJuB2ptzd3vsUx0rXakIulBzzgKmUrE+JjWIqi4nL5cGEw1GyxL9SUml3dC+STD+PaFDmKIGUtXa/71WAlMtm5gVdQ25YC6/2GOlxvojKEFI+PerGGMRaxkVvOIL4XEnvgpE/p3IJb4c3qqtbnKy/NbPU+3t2DQXnp8bnj2PLSGzyqa2BswfoNGEy+kpMiqWBcp3BE6HgdZdu7nK7wBsweg0yLNNkuyenrX4Lejfh+7WhkQBSBNY/1dF4wn/g9CNAvETsrzcbKL0Gr1MVKBxWd6ltRRhmjyrlgC+08KacoE7hI1RRQr2YQmuSshclO3IXx3DBWeYrw+bgPbaScuCH8Kw+gwqf17VGhRzz8h+dektRIb1mrN/3BK/V5xJtPS8hPDWpwHHjLxBKCFHFa2c3mYaTmHYBpWk3nDw== pulp-infra@redhat.com"
+        ssh_key: ""
       pulp_python:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOOwu9Z/TldohLPMmdnLXEc9k4hTTLJdVzvtYi+udphv86MESpWtF87RXJ8suHVJd6EDi3cLtd0yy5y1DRCCCF4JnY93WDmWQVA7VEvwcryOa5qRtg2l/4VmFEWyA+B+QpYBrKgNlEh+NoyOjrJusI/pc3GPAAsx12hZVTu+kgLWer2QLVGg0b8EPxyUNVddUyishJlidzW79xGSoPL1+LhAJgAfAQejluZbzN7LiK5+GiK2vLRdddMpRVw04/JCqPIbmpzPSnzT6iIvw9UUQWS/pdXexp9IlZjCbECojwOCaN8wcJZ8tHIaLOwDKoMfxm5W0O5czMWcG/03gOi/u9Ny0pEtqI4K2MnoyIY+uBszurhBn248TrPoAeLy8Ate7rZ/BFdD3MJXD0oTV+mY/CTM33HgksaBkyzgyYsdJdysrw94eljweGZE+z6euZyEJsv+goGD65hgNBpxWXq/3HY3YUGazj4LHkbFPVw/pCrkffEekWYPchCPPAxtwEvoc= dkliban@localhost.localdomain"
+        ssh_key: ""
       pulp_rpm:
-        ssh_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDFErIHOwLyM/uLv8qsB3jeBwOQF43gtTTKypIAVJZKaSsHAPYvepsqP04GC4L+Q0TNy5oIMoIy/IxJsHZhRQWVEyPC5AOFBlSxf9zuLRop/OkMaP8OsZAtBvvArqQa7n+FGKaLonUZrHpQ+fH8xsmiK9MoNHyKhz58Wb6yyKL0SqTlQz1tulVaD57aiqSvSAqCvL6cyF9LSCL5QZPsJJL8rY2jqAYnYpWkhznesWqafE1WWTBSptdOq0ojSf+WwBknyTHp4/as8ESHJHyDXSjesMdItYnNLO9khSh24g/mCLE5XTpIIbda7BEDYtCH5ssYO4tBIjmNoCamLMBmCseGyVPzhoiHbiRGaM0oB76cm72EOdlahmDP77/SSSg4yI2kMieFXZ2lRqWF6qaJC1WoDY0zFZRNMoAZ+ooARvmFf1qsWRGtfaZ3awJpGgZWBb3totXXOJpvUQRRd2TxJypXxDYfxWOxcHNbT3YdLfExc/u+Q57tR/EcLgovqICR4wU= dkliban@localhost.localdomain"
+        ssh_key: ""
 
   tasks:
     - name: "Install RSSH"
