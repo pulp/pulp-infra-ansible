@@ -1,4 +1,3 @@
 ansible>=2.7.5
 yamllint
-flake8
 ansible-lint

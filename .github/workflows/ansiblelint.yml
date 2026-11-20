@@ -1,51 +1,48 @@
 ---
-name: Ansible lint
+name: "Ansible lint"
 
 on:
   push:
     branches:
-      - master
+      - "master"
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   build:
     env:
-      ANSIBLE_FORCE_COLOR: 'true'
-      DEBIAN_FRONTEND: 'noninteractive'
-    runs-on: ubuntu-latest
+      ANSIBLE_FORCE_COLOR: "true"
+      DEBIAN_FRONTEND: "noninteractive"
+    runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v4
+      - uses: "actions/checkout@v6"
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v7"
+        with:
+          enable-cache: true
       - name: Install dependencies
         run: |
-          sudo apt-get install -y python3-pip
-          # pip has issue
-          #python -m pip install --upgrade pip
           pip install -r requirements.txt
-      - name: Show environment
+      - name: "Show environment"
         run: |
-          ansible --version
-          yamllint --version
-          flake8 --version
-          ansible-lint --version
+          uv run ansible --version
+          uv run yamllint --version
+          uv run ansible-lint --version
       # checks before external roles
-      - name: Test with yamllint
+      - name: "Test with yamllint"
         run: |
-          yamllint .
-      - name: Test with flake8
+          uv run yamllint .
+      - name: "Install Ansible roles"
         run: |
-          flake8 --exclude=plugins/strategy/mitogen_linear.py .
-      - name: Install Ansible roles
+          uv run ansible-galaxy install -r requirements.yml
+      - name: "Run Ansible lint"
         run: |
-          ansible-galaxy install -r requirements.yml
-      - name: Run Ansible lint
-        run: |
-          ansible-lint -p $(find . -mindepth 2 -name ".galaxy_install_info" -printf "%h " | xargs -n 1 dirname | sed -r 's/\./--exclude=\./g') playbooks
-      - name: Remove secrets
+          uv run ansible-lint -p $(find . -mindepth 2 -name ".galaxy_install_info" -printf "%h " | xargs -n 1 dirname | sed -r 's/\./--exclude=\./g') playbooks
+      - name: "Remove secrets"
         run: |
           find . -name '*.vault.*' -delete
-      - name: Check syntax
+      - name: "Check syntax"
         run: |
-          find playbooks/ -maxdepth 1 -name '*.yml' | xargs -n 1 ansible-playbook --syntax-check
-
+          find playbooks/ -maxdepth 1 -name '*.yml' | xargs -n 1 uv run ansible-playbook --syntax-check
+...

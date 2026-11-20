@@ -4,8 +4,6 @@ exclude_paths:
   - __pycache__
   - .venv
 
-parseable: true
-
 skip_list:
   - package-latest
   # we do want to do that, thanks
@@ -41,5 +39,5 @@ skip_list:
   - var-naming[no-reserved]
 
 # offline mode disables installation of requirements.yml
-#offline: true
+# offline: true
 
